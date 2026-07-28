@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Detail Event - PLN Electric Run 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --green:#00842C;--green-lt:#00A838;--green-dk:#006B23;
+            --yellow:#F7C948;--bg:#F5F5F5;--card:#FFFFFF;
+            --t1:#1A1A1A;--t2:#6B7280;--t3:#9CA3AF;--border:#E5E7EB;
+            --red:#EF4444
+        }
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;max-width:480px;margin:0 auto;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        body::-webkit-scrollbar{width:0}
+
+        .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 4px}
+        .hd-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;background:0 0;border-radius:12px;cursor:pointer;color:var(--t1);font-size:18px;transition:.2s}
+        .hd-btn:active{transform:scale(.92);background:#f0f4f8}
+        .hd-title{flex:1;text-align:center;font-size:16px;font-weight:600;margin-right:44px}
+
+        .banner{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#003D10}
+        .banner img{width:100%;height:100%;object-fit:cover;display:block}
+        .banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);z-index:2;pointer-events:none}
+        .banner-badge{position:absolute;top:16px;right:16px;background:var(--yellow);color:#1A1A1A;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;letter-spacing:.5px;box-shadow:0 4px 14px rgba(247,201,72,.45);z-index:3;animation:pulse 2.5s ease-in-out infinite}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+        .banner-inner{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:20px;pointer-events:none}
+        .banner-logo{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+        .banner-logo-icon{width:34px;height:34px;background:rgba(255,255,255,.18);border-radius:9px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2)}
+        .banner-logo-icon i{color:var(--yellow);font-size:14px}
+        .banner-label{color:rgba(255,255,255,.85);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase}
+        .banner-name{color:#fff;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.3px;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+        .banner-name span{color:var(--yellow)}
+
+        .sec-name{background:var(--card);padding:16px 20px;border-bottom:1px solid var(--border)}
+        .sec-name h1{font-size:18px;font-weight:700;line-height:1.3}
+        .sec-name p{margin-top:6px;font-size:13px;color:var(--t2);display:flex;align-items:center;gap:6px}
+        .sec-name p i{color:var(--green);font-size:12px}
+
+        .sec-info{background:var(--card);padding:0 20px 16px}
+        .info-row{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #F3F4F6}
+        .info-row:last-child{border-bottom:none}
+        .info-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+        .info-ic.cal{background:#ECFDF5;color:#059669}
+        .info-ic.time{background:#EFF6FF;color:#2563EB}
+        .info-ic.loc{background:#FEF3C7;color:#D97706}
+        .info-dt{flex:1;min-width:0}
+        .info-lbl{font-size:11px;font-weight:500;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+        .info-val{font-size:14px;font-weight:500;line-height:1.4}
+        .maps-btn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 14px;background:#F3F4F6;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:600;color:var(--t2);cursor:pointer;transition:.2s;text-decoration:none}
+        .maps-btn:active{transform:scale(.97)}
+        .maps-btn i{font-size:13px;color:#4285F4}
+
+        .sec-ticket{margin-top:10px;background:var(--card);padding:0 20px 20px}
+        .sec-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 0 12px}
+        .sec-hd h2{font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
+        .sec-hd h2 i{color:var(--green);font-size:16px}
+
+        .tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none}
+        .tabs::-webkit-scrollbar{display:none}
+        .tab{padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;white-space:nowrap;transition:.25s;flex-shrink:0}
+        .tab.active{background:var(--green);border-color:var(--green);color:#fff}
+        .tab-day{font-size:11px;font-weight:500;color:var(--t3);margin-bottom:2px}
+        .tab.active .tab-day{color:rgba(255,255,255,.8)}
+        .tab-date{font-size:14px;font-weight:700}
+
+        .tkt-card{border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:.3s}
+        .tkt-card:hover{border-color:#D1D5DB;box-shadow:0 4px 24px rgba(0,0,0,.07)}
+        .tkt-hd{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#F0FDF4,#ECFDF5);border-bottom:1px dashed #D1FAE5}
+        .tkt-type{display:flex;align-items:center;gap:10px}
+        .tkt-ic{width:38px;height:38px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+        .tkt-name{font-size:15px;font-weight:700}
+        .tkt-sub{font-size:11px;color:var(--green);font-weight:600;margin-top:1px}
+        .disc-badge{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px}
+        .tkt-bd{padding:16px 18px}
+
+        .benefits{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+        .benefits li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--t2);line-height:1.4;animation:fadeUp .4s ease forwards;opacity:0}
+        .benefits li:nth-child(1){animation-delay:.05s}
+        .benefits li:nth-child(2){animation-delay:.1s}
+        .benefits li:nth-child(3){animation-delay:.15s}
+        .benefits li:nth-child(4){animation-delay:.2s}
+        .benefits li:nth-child(5){animation-delay:.25s}
+        .benefits li:nth-child(6){animation-delay:.3s}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .chk{width:20px;height:20px;border-radius:6px;background:#ECFDF5;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.5px}
+        .chk i{font-size:10px;color:var(--green)}
+
+        .price-area{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid #F3F4F6}
+        .price-grp{display:flex;align-items:baseline;gap:10px}
+        .price-now{font-size:20px;font-weight:800}
+        .price-old{font-size:13px;color:var(--t3);text-decoration:line-through;font-weight:500}
+
+        .btn-buy{padding:12px 28px;background:var(--green);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;display:flex;align-items:center;gap:8px;user-select:none;transition:.25s;position:relative;overflow:hidden;text-decoration:none;box-shadow:0 4px 14px rgba(0,132,44,.3);font-family:inherit}
+        .btn-buy:hover{background:var(--green-lt);box-shadow:0 6px 22px rgba(0,132,44,.4);transform:translateY(-1px)}
+        .btn-buy:active{transform:scale(.97);box-shadow:0 2px 10px rgba(0,132,44,.3)}
+        .btn-buy i{font-size:13px}
+        .btn-buy::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:shim 3s ease-in-out infinite}
+        @keyframes shim{0%{left:-100%}50%,100%{left:150%}}
+
+        .sec-desc{margin-top:10px;background:var(--card);padding:0 20px 20px}
+        .desc-txt{font-size:14px;line-height:1.7;color:var(--t2);overflow:hidden;transition:max-height .4s ease;max-height:72px;position:relative}
+        .desc-txt.open{max-height:500px}
+        .desc-txt:not(.open)::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to top,var(--card),transparent);pointer-events:none}
+        .btn-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:12px;padding:10px;background:#F9FAFB;border:1px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;color:var(--green);cursor:pointer;transition:.2s;font-family:inherit}
+        .btn-more:active{transform:scale(.98)}
+        .btn-more i{font-size:11px;transition:transform .3s}
+        .btn-more.open i{transform:rotate(180deg)}
+
+        .sec-other{margin-top:10px;background:var(--card);padding:0 20px 20px}
+        .menu-item{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #F3F4F6;cursor:pointer;transition:.2s;text-decoration:none;color:inherit}
+        .menu-item:last-child{border-bottom:none}
+        .menu-item:active{background:#F9FAFB;border-radius:8px;padding-left:12px;padding-right:12px}
+        .menu-l{display:flex;align-items:center;gap:14px}
+        .menu-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:15px}
+        .menu-ic.tnc{background:#F3F4F6;color:var(--t2)}
+        .menu-ic.help{background:#EFF6FF;color:#2563EB}
+        .menu-txt{font-size:14px;font-weight:500}
+        .menu-arr{color:var(--t3);font-size:13px;transition:.2s}
+        .menu-item:active .menu-arr{transform:translateX(3px)}
+
+        .spacer{height:40px}
+
+        .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#1F2937;color:#fff;padding:12px 24px;border-radius:12px;font-size:13px;font-weight:500;z-index:9999;opacity:0;transition:.35s;pointer-events:none;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.2);max-width:90%;text-overflow:ellipsis;overflow:hidden}
+        .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+        .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
+        .modal.show{opacity:1;pointer-events:auto}
+        .modal-box{background:var(--card);width:100%;max-width:480px;border-radius:20px 20px 0 0;padding:24px 20px 32px;transform:translateY(100%);transition:.35s cubic-bezier(.4,0,.2,1);max-height:70vh;overflow-y:auto}
+        .modal.show .modal-box{transform:translateY(0)}
+        .modal-handle{width:40px;height:4px;background:#D1D5DB;border-radius:2px;margin:0 auto 20px}
+        .modal-title{font-size:18px;font-weight:700;margin-bottom:16px}
+        .modal-text{font-size:14px;line-height:1.7;color:var(--t2)}
+        .modal-close{margin-top:20px;width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;font-family:inherit}
+        .modal-close:active{transform:scale(.98)}
+
+        .fade-in{animation:fadeIn .5s ease forwards}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .d1{animation-delay:.05s;opacity:0}
+        .d2{animation-delay:.1s;opacity:0}
+        .d3{animation-delay:.15s;opacity:0}
+        .d4{animation-delay:.2s;opacity:0}
+        .d5{animation-delay:.25s;opacity:0}
+
+        .ripple{position:relative;overflow:hidden}
+        .rip{position:absolute;border-radius:50%;background:rgba(0,0,0,.08);transform:scale(0);animation:ripAni .6s linear;pointer-events:none}
+        @keyframes ripAni{to{transform:scale(4);opacity:0}}
+
+        @media(min-width:481px){body{border-left:1px solid var(--border);border-right:1px solid var(--border);box-shadow:0 0 40px rgba(0,0,0,.08)}}
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <button class="hd-btn" onclick="goBack()" aria-label="Kembali"><i class="fas fa-arrow-left"></i></button>
+        <div class="hd-title">Detail</div>
+    </header>
+
+    <div class="banner fade-in">
+        <img src="banner.png" alt="PLN Electric Run 2026">
+        <div class="banner-badge">EARLY BIRD 30% OFF</div>
+        <div class="banner-inner">
+            <div class="banner-logo">
+                <div class="banner-logo-icon"><i class="fas fa-bolt"></i></div>
+                <span class="banner-label">Presented by PLN</span>
+            </div>
+            <div class="banner-name">PLN Electric <span>Run</span> 2026</div>
+        </div>
+    </div>
+
+    <div class="sec-name fade-in d1">
+        <h1>PLN Electric Run 2026</h1>
+        <p><i class="fas fa-circle-check"></i>Diselenggarakan oleh PT PLN (Persero)</p>
+    </div>
+
+    <div class="sec-info fade-in d2">
+        <div class="info-row">
+            <div class="info-ic cal"><i class="fas fa-calendar-days"></i></div>
+            <div class="info-dt">
+                <div class="info-lbl">Tanggal</div>
+                <div class="info-val">Minggu, 08 November 2026</div>
+            </div>
+        </div>
+        <div class="info-row">
+            <div class="info-ic time"><i class="fas fa-clock"></i></div>
+            <div class="info-dt">
+                <div class="info-lbl">Waktu</div>
+                <div class="info-val">03:00 - 11:00 WIB</div>
+            </div>
+        </div>
+        <div class="info-row">
+            <div class="info-ic loc"><i class="fas fa-location-dot"></i></div>
+            <div class="info-dt">
+                <div class="info-lbl">Lokasi</div>
+                <div class="info-val">Indonesia Convention Exhibition (ICE) BSD</div>
+                <a href="https://maps.google.com/?q=ICE+BSD+Tangerang" target="_blank" class="maps-btn ripple">
+                    <i class="fab fa-google"></i> Buka Google Maps
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="sec-ticket fade-in d3">
+        <div class="sec-hd"><h2><i class="fas fa-ticket"></i> Tiket</h2></div>
+        <div class="tabs">
+            <div class="tab active" onclick="pickTab(this)"><div class="tab-day">Minggu</div><div class="tab-date">08 Nov</div></div>
+            <div class="tab" style="opacity:.5;pointer-events:none"><div class="tab-day">Sabtu</div><div class="tab-date">07 Nov</div></div>
+        </div>
+        <div class="tkt-card">
+            <div class="tkt-hd">
+                <div class="tkt-type">
+                    <div class="tkt-ic"><i class="fas fa-star"></i></div>
+                    <div><div class="tkt-name">Early Bird</div><div class="tkt-sub">Harga Terbatas</div></div>
+                </div>
+                <div class="disc-badge">-30%</div>
+            </div>
+            <div class="tkt-bd">
+                <ul class="benefits">
+                    <li><span class="chk"><i class="fas fa-check"></i></span><span>Jersey Official Event</span></li>
+                    <li><span class="chk"><i class="fas fa-check"></i></span><span>Nomor Bib + Timing Chip</span></li>
+                    <li><span class="chk"><i class="fas fa-check"></i></span><span>Goodie Bag</span></li>
+                    <li><span class="chk"><i class="fas fa-check"></i></span><span>Medal Finisher</span></li>
+                    <li><span class="chk"><i class="fas fa-check"></i></span><span>Asuransi Peserta</span></li>
+                    <li><span class="chk"><i class="fas fa-check"></i></span><span>Akses Area Festival</span></li>
+                </ul>
+                <div class="price-area">
+                    <div class="price-grp">
+                        <span class="price-now">Rp 280.000</span>
+                        <span class="price-old">Rp 400.000</span>
+                    </div>
+                    <a href="loading.html" class="btn-buy ripple"><i class="fas fa-ticket"></i> Pilih Tiket</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sec-desc fade-in d4">
+        <div class="sec-hd"><h2><i class="fas fa-align-left"></i> Deskripsi</h2></div>
+        <div class="desc-txt" id="descTxt">PLN Electric Run 2026 adalah event lari yang diselenggarakan oleh PT PLN (Persero) sebagai bentuk komitmen perusahaan dalam mendorong gaya hidup sehat masyarakat Indonesia sekaligus mempromosikan transisi energi green dan berkelanjutan. Event ini menghadirkan pengalaman lari yang unik dengan nuansa elektrik dan ramah lingkungan, dilengkapi dengan festival pasca-lari yang menarik. Dengan rute yang dirancang khusus di kawasan ICE BSD, peserta akan merasakan pengalaman lari yang menyenangkan bersama ribuan pelari lainnya. PLN Electric Run juga menjadi ajang silaturahmi dan kebersamaan bagi seluruh keluarga besar PLN serta masyarakat umum yang peduli terhadap kesehatan dan lingkungan.</div>
+        <button class="btn-more ripple" id="btnMore" onclick="toggleDesc()">Lihat Selengkapnya <i class="fas fa-chevron-down"></i></button>
+    </div>
+
+    <div class="sec-other fade-in d5">
+        <div class="sec-hd"><h2><i class="fas fa-circle-info"></i> Informasi Lainnya</h2></div>
+        <a class="menu-item ripple" onclick="openModal('tnc')">
+            <div class="menu-l"><div class="menu-ic tnc"><i class="fas fa-file-lines"></i></div><span class="menu-txt">Syarat & Ketentuan</span></div>
+            <i class="fas fa-chevron-right menu-arr"></i>
+        </a>
+        <a class="menu-item ripple" onclick="openModal('help')">
+            <div class="menu-l"><div class="menu-ic help"><i class="fas fa-headset"></i></div><span class="menu-txt">Bantuan</span></div>
+            <i class="fas fa-chevron-right menu-arr"></i>
+        </a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="modal" id="modalTnc" onclick="closeModal('tnc',event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-handle"></div>
+            <div class="modal-title">Syarat & Ketentuan</div>
+            <div class="modal-text">
+                <p style="margin-bottom:12px"><strong>1. Ketentuan Umum</strong><br>Peserta wajib berusia minimal 13 tahun pada tanggal pelaksanaan event. Peserta di bawah 17 tahun wajib didampingi orang tua/wali.</p>
+                <p style="margin-bottom:12px"><strong>2. Pendaftaran</strong><br>Pendaftaran dibuka secara online melalui platform resmi. Data yang didaftarkan harus sesuai dengan identitas asli peserta.</p>
+                <p style="margin-bottom:12px"><strong>3. Pembayaran</strong><br>Pembayaran dilakukan secara full payment. Tiket yang sudah dibeli tidak dapat ditukar atau dikembalikan (no refund, no exchange).</p>
+                <p style="margin-bottom:12px"><strong>4. Pengambilan Race Pack</strong><br>Race pack diambil pada tanggal dan lokasi yang telah ditentukan dengan membawa bukti pendaftaran dan identitas diri.</p>
+                <p style="margin-bottom:12px"><strong>5. Keselamatan</strong><br>Peserta wajib mematuhi seluruh peraturan lomba dan instruksi dari panitia. Keputusan panitia bersifat final.</p>
+                <p><strong>6. Perubahan Jadwal</strong><br>Panitia berhak mengubah jadwal, rute, atau ketentuan lainnya dengan pemberitahuan sebelumnya.</p>
+            </div>
+            <button class="modal-close" onclick="closeModal('tnc')">Tutup</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modalHelp" onclick="closeModal('help',event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-handle"></div>
+            <div class="modal-title">Bantuan</div>
+            <div class="modal-text">
+                <p style="margin-bottom:12px">Jika Anda membutuhkan bantuan terkait event PLN Electric Run 2026, silakan hubungi kami melalui:</p>
+                <p style="margin-bottom:8px"><strong>Email:</strong><br><span style="color:var(--green)">electricrun@pln.co.id</span></p>
+                <p style="margin-bottom:8px"><strong>Telepon:</strong><br><span style="color:var(--green)">(021) 123-4567</span></p>
+                <p style="margin-bottom:8px"><strong>WhatsApp:</strong><br><span style="color:var(--green)">+62 812-3456-7890</span></p>
+                <p><strong>Jam Operasional:</strong><br>Senin - Jumat, 08:00 - 17:00 WIB</p>
+            </div>
+            <button class="modal-close" onclick="closeModal('help')">Tutup</button>
+        </div>
+    </div>
+
+<script>
+function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+function goBack(){document.referrer?window.history.back():showToast('Kembali ke halaman sebelumnya')}
+function pickTab(el){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});el.classList.add('active')}
+function toggleDesc(){var c=document.getElementById('descTxt'),b=document.getElementById('btnMore'),o=c.classList.contains('open');if(o){c.classList.remove('open');b.classList.remove('open');b.innerHTML='Lihat Selengkapnya <i class="fas fa-chevron-down"></i>'}else{c.classList.add('open');b.classList.add('open');b.innerHTML='Tutup Deskripsi <i class="fas fa-chevron-down"></i>'}}
+function openModal(t){document.getElementById(t==='tnc'?'modalTnc':'modalHelp').classList.add('show');document.body.style.overflow='hidden'}
+function closeModal(t,e){if(e&&e.target!==e.currentTarget)return;document.getElementById(t==='tnc'?'modalTnc':'modalHelp').classList.remove('show');document.body.style.overflow=''}
+document.addEventListener('click',function(e){var r=e.target.closest('.ripple');if(!r)return;var b=r.getBoundingClientRect(),s=Math.max(b.width,b.height),x=e.clientX-b.left-s/2,y=e.clientY-b.top-s/2,d=document.createElement('span');d.className='rip';d.style.width=d.style.height=s+'px';d.style.left=x+'px';d.style.top=y+'px';r.appendChild(d);setTimeout(function(){d.remove()},600)});
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.style.animationPlayState='running';obs.unobserve(en.target)}})},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(function(el){el.style.animationPlayState='paused';obs.observe(el)});
+setTimeout(function(){document.querySelectorAll('.fade-in').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight)el.style.animationPlayState='running'})}),100);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal.show').forEach(function(m){m.classList.remove('show');document.body.style.overflow=''})});
+</script>
+</body>
+</html>, 
