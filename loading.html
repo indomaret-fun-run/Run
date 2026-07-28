@@ -30,7 +30,9 @@ body::-webkit-scrollbar{width:0}
 .hd-btn:active{transform:scale(.9);background:#f0f4f8}
 .hd-t{flex:1;text-align:center;font-size:14px;font-weight:800;color:var(--t2);margin-right:42px;letter-spacing:.8px;text-transform:uppercase}
 
-.banner{position:relative;width:100%;height:280px;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 10%,var(--sky3) 28%,var(--sky4) 46%,var(--sky5) 60%,var(--sky6) 70%);overflow:hidden}
+.banner{width:100%;height:280px;overflow:hidden;position:relative}
+.banner img{width:100%;height:100%;display:block;object-fit:cover}
+
 
 .sun{position:absolute;top:5%;right:8%;width:50px;height:50px;background:radial-gradient(circle,#fff9c4,#ffee58 40%,#ffc107);border-radius:50%;z-index:0;box-shadow:0 0 22px rgba(255,235,59,.6),0 0 55px rgba(255,193,7,.35),0 0 110px rgba(255,193,7,.15);animation:sunP 4s ease-in-out infinite}
 @keyframes sunP{0%,100%{box-shadow:0 0 22px rgba(255,235,59,.6),0 0 55px rgba(255,193,7,.35),0 0 110px rgba(255,193,7,.15)}50%{box-shadow:0 0 28px rgba(255,235,59,.7),0 0 65px rgba(255,193,7,.4),0 0 130px rgba(255,193,7,.2)}}
@@ -262,49 +264,7 @@ body::-webkit-scrollbar{width:0}
 <div class="hd-t">Ruang Tunggu</div>
 </header>
 
-<div class="banner">
-<div class="sun-ray"></div><div class="sun"></div>
-<div class="cloud c1"><div class="cb"></div></div>
-<div class="cloud c2"><div class="cb"></div></div>
-<div class="cloud c3"><div class="cb"></div></div>
-<div class="bird b1"><span></span><span></span></div>
-<div class="bird b2"><span></span><span></span></div>
-<div class="hill h1"></div><div class="hill h2"></div><div class="hill h3"></div><div class="hill h4"></div>
-<div class="path"></div>
-<div class="tuft t1"><span></span><span></span><span></span></div>
-<div class="tuft t2"><span></span><span></span><span></span></div>
-<div class="bush bw1"></div><div class="bush bw2"></div>
-
-<div class="bldg">
-<div class="bldg-flag"></div><div class="bldg-chimney"></div><div class="bldg-roof-t"></div>
-<div class="bldg-tower">
-<div class="clock"><div class="ck ck-h"></div><div class="ck ck-m"></div><div class="c-dot"></div></div>
-<div class="bw bt1"></div><div class="bw bt2"></div><div class="bw bt3"></div><div class="bw bt4"></div>
-</div>
-<div class="bldg-body">
-<div class="bw bb1"></div><div class="bw bb2"></div><div class="bw bb3"></div>
-<div class="bldg-fb"><span></span><span></span><span></span></div>
-<div class="bldg-door"></div>
-</div>
-</div>
-
-<div class="img-wrap">
-<div class="img-pin"></div>
-<div class="img-frame"><img src="banner-event.png" alt="PLN Electric Run 2026"></div>
-<div class="img-stand"></div><div class="img-base"></div>
-</div>
-
-<div class="flower f1"><div class="fp"><span></span><span></span><span></span><span></span><span></span><div class="fc"></div></div><div class="fs"></div></div>
-<div class="flower f2"><div class="fp"><span></span><span></span><span></span><span></span><span></span><div class="fc"></div></div><div class="fs"></div></div>
-
-<div class="runner r1"><div class="runner-inner"><div class="sl-w"><span class="sl"></span><span class="sl"></span><span class="sl"></span></div><div class="r-shad"></div><div class="r-head"><div class="r-helm"><div class="r-hb">⚡</div><div class="r-hs"></div></div><div class="r-eb l"></div><div class="r-eb r"></div><div class="r-ey l"></div><div class="r-ey r"></div><div class="r-mo"></div><div class="r-c l"></div><div class="r-c r"></div></div><div class="r-nk"></div><div class="r-bd"><div class="r-nm">01</div><div class="r-cl"></div><div class="r-am l"></div><div class="r-am r"></div></div><div class="r-lgs"><div class="r-lg l"><div class="r-sh"></div></div><div class="r-lg r"><div class="r-sh"></div></div></div></div></div>
-
-<div class="runner r2"><div class="runner-inner"><div class="sl-w"><span class="sl"></span><span class="sl"></span><span class="sl"></span></div><div class="r-shad"></div><div class="r-head"><div class="r-helm"><div class="r-hb">⚡</div><div class="r-hs"></div></div><div class="r-eb l"></div><div class="r-eb r"></div><div class="r-ey l"></div><div class="r-ey r"></div><div class="r-mo"></div><div class="r-c l"></div><div class="r-c r"></div></div><div class="r-nk"></div><div class="r-bd"><div class="r-nm">02</div><div class="r-cl"></div><div class="r-am l"></div><div class="r-am r"></div></div><div class="r-lgs"><div class="r-lg l"><div class="r-sh"></div></div><div class="r-lg r"><div class="r-sh"></div></div></div></div></div>
-
-<div class="runner r3"><div class="runner-inner"><div class="sl-w"><span class="sl"></span><span class="sl"></span><span class="sl"></span></div><div class="r-shad"></div><div class="r-head"><div class="r-helm"><div class="r-hb">⚡</div><div class="r-hs"></div></div><div class="r-eb l"></div><div class="r-eb r"></div><div class="r-ey l"></div><div class="r-ey r"></div><div class="r-mo"></div><div class="r-c l"></div><div class="r-c r"></div></div><div class="r-nk"></div><div class="r-bd"><div class="r-nm">03</div><div class="r-cl"></div><div class="r-am l"></div><div class="r-am r"></div></div><div class="r-lgs"><div class="r-lg l"><div class="r-sh"></div></div><div class="r-lg r"><div class="r-sh"></div></div></div></div></div>
-
-<div class="bolt-d bd1">⚡</div><div class="bolt-d bd2">⚡</div><div class="bolt-d bd3">⚡</div>
-</div>
+<div class="banner"><img src="banner-event.png" alt="Banner Event"></div>
 
 <div class="wrap">
 <div class="card">
